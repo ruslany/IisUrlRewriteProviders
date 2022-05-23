@@ -13,6 +13,9 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# Assembly Signing Keys
+*.snk
+
 # Mono auto generated files
 mono_crash.*
 
