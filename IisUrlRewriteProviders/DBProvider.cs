@@ -60,7 +60,7 @@ namespace IisUrlRewriteProviders
                 return output;
             }
 
-            return input;
+            return String.Empty;
         }
 
         private IDictionary<string, string> LoadMappingsFromDatabase()
