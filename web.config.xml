@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <rewrite>
+            <providers>
+                <provider name="DBProvider" type="IisUrlRewriteProviders.DBProvider, IisUrlRewriteProviders, Version=1.0.0.0, Culture=neutral, PublicKeyToken=74af9e8b8f368215">
+                    <settings>
+                        <add key="ConnectionString" value="REPLACE with real DB Connection String here" />
+                        <add key="StoredProcedure" value="[dbo].[GetRewrittenUrls]" />
+                        <add key="CacheMinutesInterval" value="1" />
+                    </settings>
+                </provider>
+            </providers>
+            <rules>
+                <rule name="DbProviderTest" stopProcessing="true">
+                    <match url="(.*)" />
+                    <conditions>
+                        <add input="{DBProvider:{R:1}}" pattern="(.+)" />
+                    </conditions>
+                    <action type="Redirect" url="{C:1}" />
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>
